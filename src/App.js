@@ -1,20 +1,16 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Detail from "./routes/Detail";
-import Home from "./routes/Home";
+import Home from './routes/Home';
+import Detail from './routes/Detail';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
-  return (
-    <Router>
-      <Switch>
-        <Route path="/movie/:id">
-          <Detail />
-        </Route>
-        <Route path="/">
-          <Home />
-        </Route>
-      </Switch>
-    </Router>
-  );
+	return (
+		<BrowserRouter>
+			<Routes>
+				<Route path="/movie/:id" element={<Detail />} />
+				<Route path={process.env.PUBLIC_URL + '/'} element={<Home />} />
+			</Routes>
+		</BrowserRouter>
+	);
 }
 
 export default App;
